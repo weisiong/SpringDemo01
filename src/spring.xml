@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:context="http://www.springframework.org/schema/context">
+
+<!-- <beans default-init-method="myInit" default-destroy-method="cleanUp"> -->
+<!-- 	<bean id="triangle" class="org.koushik.javabrains.Triangle" autowire="byName" >
+	    <property name="pointA" ref="pointA" /> 
+	    <property name="pointB" ref="pointB" />
+	    <property name="pointC" ref="pointC" />    
+	</bean>  -->   
+	
+	<bean id="circle" class="org.koushik.javabrains.Circle">
+	    <qualifier value = "CircleRelated" />
+	    <property name="point" ref="pointA" /> 
+	    <property name="radius" value="6" />    
+	</bean>    	
+    <bean id="pointA" class="org.koushik.javabrains.Point" >
+		<property name="x" value="${pointA.pointX}" />
+		<property name="y" value="${pointA.pointY}" />
+	</bean>
+	<bean id="pointB" class="org.koushik.javabrains.Point">
+		<property name="x" value="${pointB.pointX}" />
+		<property name="y" value="${pointB.pointY}" />
+	</bean>
+	<bean id="pointC" class="org.koushik.javabrains.Point"> 
+		<property name="x" value="${pointC.pointX}" />
+		<property name="y" value="${pointC.pointY}" />
+	</bean>
+	
+	<bean class="org.koushik.javabrains.MyBeanFactorPP" />
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+	    <property name="locations" value="pointConfig.properties" />
+	</bean>   
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+</beans>
