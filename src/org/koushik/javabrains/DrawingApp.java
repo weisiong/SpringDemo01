@@ -12,7 +12,7 @@ public class DrawingApp {
 		Shape shape = (Shape) context.getBean("circle");
 		shape.draw();
 		
-		System.out.println("testing");
+		System.out.println("testing how to use Git");
 		//shape = (Shape) context.getBean("triangle");
 		//shape.draw();
 		
